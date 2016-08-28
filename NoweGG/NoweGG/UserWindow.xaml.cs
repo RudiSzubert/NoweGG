@@ -10,35 +10,30 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace NoweGG
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserWindow : Window
     {
-        public MainWindow()
+        public UserWindow()
         {
             InitializeComponent();
         }
 
-        private void buttonUser_Click(object sender, RoutedEventArgs e)
+        private void buttonRegister_Click(object sender, RoutedEventArgs e)
         {
-            var wind = new UserWindow();
+            var wind = new RegisterWindow();
             wind.Show();
             this.Close();
         }
-
-        private void buttonServer_Click(object sender, RoutedEventArgs e)
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void buttonExit_Click(object sender, RoutedEventArgs e)
-        {
+            var wind = new MainWindow();
+            wind.Show();
             this.Close();
         }
     }
