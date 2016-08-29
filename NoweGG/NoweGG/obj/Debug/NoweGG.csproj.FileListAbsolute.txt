@@ -16,3 +16,7 @@ C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\NoweGG.exe
 C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\NoweGG.pdb
 C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\RegisterWindow.g.cs
 C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\RegisterWindow.baml
+C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\ServerWindow.g.cs
+C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\Window1.g.cs
+C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\ServerWindow.baml
+C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\Window1.baml

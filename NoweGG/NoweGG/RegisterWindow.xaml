@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NoweGG"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="250" Width="350">
+        Title="RegisterWindow" Height="250" Width="350" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Margin="15,20,0,0" Height="20" Width="60"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Margin="15,45,0,0" Height="20" Width="60"/>

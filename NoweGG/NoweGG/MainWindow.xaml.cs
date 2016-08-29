@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +16,7 @@ using System.Windows.Shapes;
 
 namespace NoweGG
 {
+    
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -34,7 +36,9 @@ namespace NoweGG
 
         private void buttonServer_Click(object sender, RoutedEventArgs e)
         {
-
+            var wind = new ServerWindow();
+            wind.Show();
+            this.Close();
         }
 
         private void buttonExit_Click(object sender, RoutedEventArgs e)
