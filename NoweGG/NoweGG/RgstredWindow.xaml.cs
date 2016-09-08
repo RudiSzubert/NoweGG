@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,38 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace NoweGG
 {
-    
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for RgstredWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RgstredWindow : Window
     {
-        public MainWindow()
+        public RgstredWindow()
         {
             InitializeComponent();
         }
 
-        private void buttonUser_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
             var wind = new UserWindow();
             wind.Show();
-            this.Close();
-        }
-
-        private void buttonGGServer_Click(object sender, RoutedEventArgs e)
-        {
-            var wind = new GGServerWindow();
-            wind.Show();
-            this.Close();
-        }
-
-        private void buttonExit_Click(object sender, RoutedEventArgs e)
-        {
             this.Close();
         }
     }

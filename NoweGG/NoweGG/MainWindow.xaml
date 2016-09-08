@@ -8,7 +8,7 @@
         Title="MainWindow" Height="300" Width="250" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button x:Name="buttonUser" Content="User" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.475,4.379" Margin="50,40,0,0" Height="50" FontSize="20" Click="buttonUser_Click"/>
-        <Button x:Name="buttonServer" Content="Server" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.475,4.379" Margin="50,110,0,0" Height="50" FontSize="20" Click="buttonServer_Click"/>
+        <Button x:Name="buttonGGServer" Content="GGServer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.475,4.379" Margin="50,110,0,0" Height="50" FontSize="20" Click="buttonGGServer_Click"/>
         <Button x:Name="buttonExit" Content="Exit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.475,4.379" Margin="50,180,0,0" Height="50" FontSize="20" Click="buttonExit_Click"/>
 
     </Grid>

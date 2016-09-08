@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace NoweGG
 {
+    [Serializable]
     class Conversation
     {
         public Conversation(Message msg)
@@ -45,7 +46,7 @@ namespace NoweGG
 
         private List<Message> Conv = new List<Message>();
     }
-
+    [Serializable]
     class Message
     {
         public Message(string txt, DateTime tim, User FR, User TO)

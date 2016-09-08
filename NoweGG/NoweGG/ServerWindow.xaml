@@ -1,14 +1,18 @@
-﻿<Window x:Class="NoweGG.ServerWindow"
+﻿<Window x:Class="NoweGG.GGServerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NoweGG"
         mc:Ignorable="d"
-        Title="ServerWindow" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+        Title="GGServerWindow" Height="300" Width="300" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="105,58,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Your IP address: " VerticalAlignment="Top" Margin="25,25,0,0" Width="250" Height="25" TextAlignment="Center"/>
+        <TextBlock x:Name="IPBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,143,0,0" Width="250" Height="25" TextAlignment="Center"><Run Text="Your IP address: "/></TextBlock>
+        <Button x:Name="CheckingButton" Content="CheckingButton" HorizontalAlignment="Left" Margin="25,222,0,0" VerticalAlignment="Top" Width="75" Click="CheckingButton_Click"/>
+        <TextBlock x:Name="PortBlock" TextWrapping="Wrap" Text="Port:" Margin="25,58,217,190" TextAlignment="Center"/>
+        <TextBox x:Name="PortBox" TextWrapping="Wrap" Text="51212" Margin="84,55,148,190" Width="60"/>
+        <Button x:Name="ConnectButton" Content="Connect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="95,101,0,0" Click="ConnectButton_Click"/>
+        <Button x:Name="button" Content="SendingButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="185,173,0,0" Click="button_Click"/>
 
     </Grid>
 </Window>

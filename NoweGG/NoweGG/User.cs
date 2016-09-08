@@ -1,103 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Sockets;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using System.Threading.Tasks;
+using System.Xml;
 
 namespace NoweGG
 {
+    [Serializable]
     class User
     {
         private bool active;
+        [DataMember]
+        private List<User> Book = new List<User>();
 
+        [DataMember]
         private string login;
-
+        [DataMember]
         private string password;
-
-        private int number = 0;
-
-        public int Number
+        public User(string log, string pass, int numb)
         {
-            get
-            {
-                return number;
-            }
-            set
-            {
-                number = value;
-            }
+            login = log;
+            password = pass;
+            Number = numb;
         }
-
-        private string name;
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-            }
-        }
-
-        private string lastName;
-
-        public string LastName
-        {
-            get
-            {
-                return lastName;
-            }
-            set
-            {
-                lastName = value;
-            }
-        }
-
-        private int age = 0;
-
-        public int Age
-        {
-            get
-            {
-                return age;
-            }
-            set
-            {
-                age = value;
-            }
-        }
-
-        private string city;
-
-        public string City
-        {
-            get
-            {
-                return city;
-            }
-            set
-            {
-                city = value;
-            }
-        }
-
-        private string country;
-
-        public string Country
-        {
-            get
-            {
-                return country;
-            }
-            set
-            {
-                country = value;
-            }
-        }
-
-        List<User> Book = new List<User>();
+        [DataMember]
+        public int Number { get; set; }
+        [DataMember]
+        public string Name { get; set; }
+        [DataMember]
+        public string LastName { get; set; }
+        [DataMember]
+        public int Age { get; set; }
+        [DataMember]
+        public string City { get; set; }
+        [DataMember]
+        public string Country { get; set; }
     }
 }
