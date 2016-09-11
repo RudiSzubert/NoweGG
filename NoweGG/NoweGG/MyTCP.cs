@@ -9,10 +9,13 @@ namespace NoweGG
 {
     internal class MyTCP
     {
-        private readonly GGServer ggserver;
+        private  GGServer ggserver;
 
-        private readonly string MyIP = "192.168.1.229";
-        private readonly int MyPort = 51212;
+        private string MyIP = "192.168.1.229";
+
+        private int MyPort = 51212;
+
+        private User user;
 
         public MyTCP()
         {
@@ -21,6 +24,11 @@ namespace NoweGG
         public MyTCP(ref GGServer ggserv)
         {
             ggserver = ggserv;
+        }
+
+        public MyTCP(ref User usr)
+        {
+            this.user = usr;
         }
 
         public MyTCP(string ip, int port)
@@ -34,6 +42,13 @@ namespace NoweGG
             MyIP = ip;
             MyPort = port;
             ggserver = ggserv;
+        }
+
+        public MyTCP(string ip, int port, ref User usr)
+        {
+            MyIP = ip;
+            MyPort = port;
+            this.user = usr;
         }
 
         public void TcpClient(User user)
@@ -94,6 +109,11 @@ namespace NoweGG
                     if (obj.GetType() == typeof(Message))
                     {
                         var msgg = (Message) obj;
+                        foreach (User usr in ggserver.Usrs)
+                        {
+                            if(msgg.From.Equals(usr))
+                                usr.SaveMessage(msgg);
+                        }
                     }
                     else if (obj.GetType() == typeof(User))
                     {
