@@ -22,3 +22,5 @@ C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\ServerWindow.baml
 C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\Window1.baml
 C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\RgstredWindow.g.cs
 C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\RgstredWindow.baml
+C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\Logged.g.cs
+C:\test\Na repy\gg\NoweGG\NoweGG\obj\Debug\Logged.baml

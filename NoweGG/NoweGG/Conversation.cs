@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace NoweGG
 {
     [Serializable]
-    class Conversation
+    class Conversation 
     {
         public Conversation(Message msg)
         {
             Conv.Add(msg);
-            Usr1 = msg.To;
-            Usr2 = msg.From;
+            Usr1 = msg.From;
+            Usr2 = msg.To;
         }
 
         private User usr1;
@@ -32,7 +32,7 @@ namespace NoweGG
 
         private User usr2;
 
-        public User Usr2
+       public User Usr2
         {
             get
             {
@@ -44,7 +44,7 @@ namespace NoweGG
             }
         }
 
-        private List<Message> Conv = new List<Message>();
+        public List<Message> Conv = new List<Message>();
     }
     [Serializable]
     class Message

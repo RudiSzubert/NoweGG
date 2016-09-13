@@ -21,11 +21,13 @@ namespace NoweGG
     /// </summary>
     public partial class GGServerWindow : Window
     {
+        private MyTCP mytcp;
         public GGServerWindow()
         {
             InitializeComponent();
             GGServer = new GGServer(GGServer.IPCheck(), PortBlock.Text);
-            IPBlock.Text = "Your IP address:" + GGServer.MyIP;
+            IPShower.Text = "Your IP address:" + GGServer.MyIP;
+            mytcp = new MyTCP(GGServer.MyIP, 51212, ref GGServer);
         }
         private GGServer GGServer=null;
 
@@ -35,23 +37,21 @@ namespace NoweGG
         //    user.TCPClient();
         //}
 
-        private void CheckingButton_Click(object sender, RoutedEventArgs e)
-        {
-            IPBlock.Text = GGServer.Usrs.Count.ToString();
-        }
-
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
-            MyTCP mytcp = new MyTCP(GGServer.MyIP, 51212, ref GGServer);
-            Thread Thread1 = new Thread(new ThreadStart(mytcp.TcpListener));
-            Thread1.Start();
+            mytcp.Listening(mytcp);
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void DisconnectButton_Click(object sender, RoutedEventArgs e)
         {
-            MyTCP mytcp = new MyTCP();
-            User usr = new User("login", "password", 53);
-            mytcp.TcpClient(usr);
+            mytcp.Disconnect();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            var wind = new MainWindow();
+            wind.Show();
+            //this.Close();
         }
     }
 }

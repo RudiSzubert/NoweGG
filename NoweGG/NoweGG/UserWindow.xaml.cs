@@ -36,5 +36,13 @@ namespace NoweGG
             wind.Show();
             this.Close();
         }
+
+        private void buttonLogin_Click(object sender, RoutedEventArgs e)
+        {
+            User user = new User("login","password", 123);
+            string answer = null;
+            MyTCP mytcp = new MyTCP();
+            mytcp.Login(LoginBox.Text, PasswordBox.Text, ref user, ref answer);
+        }
     }
 }

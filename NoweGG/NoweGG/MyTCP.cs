@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization;
@@ -9,13 +10,13 @@ namespace NoweGG
 {
     internal class MyTCP
     {
-        private  GGServer ggserver;
+        private readonly GGServer ggserver;
 
-        private string MyIP = "192.168.1.229";
+        private readonly string MyIP = "192.168.1.229";
 
-        private int MyPort = 51212;
+        private readonly int MyPort = 51212;
 
-        private User user;
+        private Thread thread1;
 
         public MyTCP()
         {
@@ -24,11 +25,6 @@ namespace NoweGG
         public MyTCP(ref GGServer ggserv)
         {
             ggserver = ggserv;
-        }
-
-        public MyTCP(ref User usr)
-        {
-            this.user = usr;
         }
 
         public MyTCP(string ip, int port)
@@ -44,11 +40,15 @@ namespace NoweGG
             ggserver = ggserv;
         }
 
-        public MyTCP(string ip, int port, ref User usr)
+        public void Listening(MyTCP mytcp)
         {
-            MyIP = ip;
-            MyPort = port;
-            this.user = usr;
+            thread1 = new Thread(mytcp.TcpListener);
+            thread1.Start();
+        }
+
+        public void Disconnect()
+        {
+            thread1.Abort();
         }
 
         public void TcpClient(User user)
@@ -73,22 +73,35 @@ namespace NoweGG
             client.Close();
         }
 
-        //public static byte[] SerializeTo(object Object)
-        //{
-        //    var stream = new MemoryStream();
-        //    IFormatter formatter = new BinaryFormatter();
-        //    formatter.Serialize(stream, Object);
-        //    return stream.ToArray();
-        //}
+        public bool Login(string login, string password, ref User usr, ref string answer)
+        {
+            var client = new TcpClient();
+            client.Connect(MyIP, MyPort);
+            var stream = client.GetStream();
+            IFormatter formatter = new BinaryFormatter();
+            var log = new string[2];
+            log[0] = login;
+            log[1] = password;
+            formatter.Serialize(stream, log);
+            var obj = formatter.Deserialize(stream);
+            if (obj.GetType() == typeof(User))
+            {
+                usr = (User) obj;
+                return true;
+            }
+            else if (obj.GetType() == typeof(string))
+            {
+                if ((string) obj == "1")
+                    answer = "Password is incorrect";
+                else if ((string) obj == "2")
+                    answer = "Login is incorrect";
+                return false;
+            }
+            else return false;
 
-        //public static object DeserializeFromByte(byte[] bytes)
-        //{
-        //    Stream stream = new MemoryStream(bytes);
-        //    IFormatter formatter = new BinaryFormatter();
-        //    stream.Seek(0, SeekOrigin.Begin);
-        //    var Object = formatter.Deserialize(stream);
-        //    return Object;
-        //}
+
+                
+        }
 
         public void TcpListener()
         {
@@ -97,8 +110,6 @@ namespace NoweGG
             {
                 _Listener = new TcpListener(IPAddress.Parse(MyIP), MyPort);
                 _Listener.Start();
-                var bytes = new byte[256];
-                string data = null;
                 while (true)
                 {
                     Thread.Sleep(100);
@@ -109,17 +120,41 @@ namespace NoweGG
                     if (obj.GetType() == typeof(Message))
                     {
                         var msgg = (Message) obj;
-                        foreach (User usr in ggserver.Usrs)
-                        {
-                            if(msgg.From.Equals(usr))
+                        foreach (var usr in ggserver.Usrs)
+                            if (msgg.From.Equals(usr))
                                 usr.SaveMessage(msgg);
-                        }
                     }
                     else if (obj.GetType() == typeof(User))
                     {
                         var usr = (User) obj;
                         ggserver.Usrs.Add(usr);
                         ggserver.ListToFile();
+                    }
+                    else if (obj.GetType() == typeof(string[]))
+                    {
+                        var log = new string[2];
+                        log = (string[]) obj;
+                        var helper = false;
+                        var msg = "1";
+                        foreach (var usr in ggserver.Usrs)
+                            if (usr.login == log[0])
+                                if (usr.password == log[1])
+                                {
+                                    helper = true;
+                                    formatter.Serialize(stream, usr);
+                                }
+                                else
+                                {
+                                    formatter.Serialize(stream, msg);
+                                    break;
+                                }
+                            else if (helper)
+                                break;
+                        if (helper == false)
+                        {
+                            msg = "2";
+                            formatter.Serialize(stream, msg);
+                        }
                     }
                     client.Close();
                 }

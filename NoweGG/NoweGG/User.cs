@@ -17,7 +17,7 @@ namespace NoweGG
         private List<User> Book = new List<User>();
 
         [DataMember]
-        private string login;
+        public string login;
 
         private List<Conversation> History = new List<Conversation>();
 
@@ -75,7 +75,7 @@ namespace NoweGG
         }
 
         [DataMember]
-        private string password;
+        public string password;
         public User(string log, string pass, int numb)
         {
             login = log;

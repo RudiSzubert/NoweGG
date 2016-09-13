@@ -5,14 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NoweGG"
         mc:Ignorable="d"
-        Title="GGServerWindow" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+        Title="GGServerWindow" Height="250" Width="300" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBlock x:Name="IPBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,143,0,0" Width="250" Height="25" TextAlignment="Center"><Run Text="Your IP address: "/></TextBlock>
-        <Button x:Name="CheckingButton" Content="CheckingButton" HorizontalAlignment="Left" Margin="25,222,0,0" VerticalAlignment="Top" Width="75" Click="CheckingButton_Click"/>
-        <TextBlock x:Name="PortBlock" TextWrapping="Wrap" Text="Port:" Margin="25,58,217,190" TextAlignment="Center"/>
-        <TextBox x:Name="PortBox" TextWrapping="Wrap" Text="51212" Margin="84,55,148,190" Width="60"/>
-        <Button x:Name="ConnectButton" Content="Connect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="95,101,0,0" Click="ConnectButton_Click"/>
-        <Button x:Name="button" Content="SendingButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="185,173,0,0" Click="button_Click"/>
+        <TextBlock x:Name="IPShower" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="25,25,0,0" Width="250" Height="25" TextAlignment="Center"><Run Text="Your IP address: "/></TextBlock>
+        <TextBlock x:Name="PortBlock" TextWrapping="Wrap" Text="Port:" Margin="25,60,217,140" TextAlignment="Center"/>
+        <TextBox x:Name="PortBox" TextWrapping="Wrap" Text="51212" Margin="84,58,148,130" Width="60"/>
+        <Button x:Name="ConnectButton" Content="Start Listening" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="45,110,0,0" Click="ConnectButton_Click"/>
+        <TextBlock x:Name="IpBlock" TextWrapping="Wrap" Text="IP:" Margin="25,85,217,112" TextAlignment="Center"/>
+        <TextBox x:Name="IPBox" TextWrapping="Wrap" Text="192.168.1.229" Margin="84,82,117,110" RenderTransformOrigin="0.45,0.88"/>
+        <Button x:Name="DisconnectButton" Content="Disconnect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="150,110,0,0" Click="DisconnectButton_Click"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Margin="45,150,0,0" Click="BackButton_Click"/>
 
     </Grid>
 </Window>

@@ -8,6 +8,6 @@
         Title="Logged" Height="5
         00" Width="300">
     <Grid>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="400" Margin="25,25,0,0" VerticalAlignment="Top" Width="250"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="400" Margin="25,50,0,0" VerticalAlignment="Top" Width="250"/>
     </Grid>
 </Window>
