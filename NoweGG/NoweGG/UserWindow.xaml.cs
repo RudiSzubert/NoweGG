@@ -42,7 +42,17 @@ namespace NoweGG
             User user = new User("login","password", 123);
             string answer = null;
             MyTCP mytcp = new MyTCP();
-            mytcp.Login(LoginBox.Text, PasswordBox.Text, ref user, ref answer);
+
+            if (mytcp.Login(LoginBox.Text, PasswordBox.Text, ref user, ref answer))
+            {
+                var wind = new Logged(user);
+                wind.Show();
+                this.Close();
+            }
+            else
+            {
+                this.LoginAlert.Text = answer;
+            }
         }
     }
 }

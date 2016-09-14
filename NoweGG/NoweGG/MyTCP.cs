@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Net;
 using System.Net.Sockets;
@@ -98,9 +99,18 @@ namespace NoweGG
                 return false;
             }
             else return false;
+        }
 
-
-                
+        public List<User> ForSearch()
+        {
+            var client = new TcpClient();
+            client.Connect(MyIP, MyPort);
+            var stream = client.GetStream();
+            IFormatter formatter = new BinaryFormatter();
+            int messg = 1;
+            formatter.Serialize(stream,messg);
+            List<User> UsrList = (List<User>)formatter.Deserialize(stream);
+            return UsrList;
         }
 
         public void TcpListener()
@@ -156,7 +166,14 @@ namespace NoweGG
                             formatter.Serialize(stream, msg);
                         }
                     }
-                    client.Close();
+                    else if (obj.GetType() == typeof(int))
+                    {
+                        if ((int) obj == 1)
+                        {
+                            formatter.Serialize(stream,this.ggserver.Usrs);
+                        }
+                    }
+                     client.Close();
                 }
             }
 

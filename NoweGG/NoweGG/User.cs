@@ -10,7 +10,7 @@ using System.Xml;
 namespace NoweGG
 {
     [Serializable]
-    class User 
+    public class User 
     {
         private bool active;
         [DataMember]
